@@ -7,12 +7,60 @@ import Capacitor
  */
 @objc(FirebasePerformancePlugin)
 public class FirebasePerformancePlugin: CAPPlugin {
-    private let implementation = FirebasePerformance()
+    public let errorTraceNameMissing = "traceName must be provided.";
+    public let errorMetricNameMissing = "metricName must be provided.";
+    public let errorTraceNameAlreadyAssigned = "traceName already assigned.";
+    public let errorTraceNotFound = "No trace was found with the provided traceName.";
+    private var implementation: FirebasePerformance?
+    
+    public override func load() {
+        implementation = FirebasePerformance()
+    }
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    @objc func startTrace(_ call: CAPPluginCall) {
+        guard let traceName = call.getString("traceName") else {
+            call.reject(errorTraceNameMissing)
+            return;
+        }
+        let trace = implementation?.getTraceByName(traceName)
+        guard trace == nil else {
+            call.reject(errorTraceNameAlreadyAssigned)
+            return;
+        }
+        implementation?.startTrace(traceName)
+        call.resolve()
+    }
+    
+    @objc func stopTrace(_ call: CAPPluginCall) {
+        guard let traceName = call.getString("traceName") else {
+            call.reject(errorTraceNameMissing)
+            return;
+        }
+        let trace = implementation?.getTraceByName(traceName)
+        guard trace != nil else {
+            call.reject(errorTraceNotFound)
+            return;
+        }
+        implementation?.stopTrace(traceName)
+        call.resolve()
+    }
+    
+    @objc func incrementMetric(_ call: CAPPluginCall) {
+        guard let traceName = call.getString("traceName") else {
+            call.reject(errorTraceNameMissing)
+            return;
+        }
+        guard let metricName = call.getString("metricName") else {
+            call.reject(errorMetricNameMissing)
+            return;
+        }
+        let trace = implementation?.getTraceByName(traceName)
+        guard trace != nil else {
+            call.reject(errorTraceNotFound)
+            return;
+        }
+        let incrementBy = call.getInt("incrementBy") ?? 1
+        implementation?.incrementMetric(traceName, metricName, incrementBy)
+        call.resolve()
     }
 }
