@@ -48,6 +48,8 @@ export interface IncrementMetricOptions {
   metricName: string;
   /**
    * Amount by which the metric has to be incremented.
+   * 
+   * Default: `1`
    */
-  incrementBy: number;
+  incrementBy?: number;
 }

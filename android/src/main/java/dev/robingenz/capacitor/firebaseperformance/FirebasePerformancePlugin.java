@@ -5,18 +5,67 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
+import com.google.firebase.perf.metrics.Trace;
 
 @CapacitorPlugin(name = "FirebasePerformance")
 public class FirebasePerformancePlugin extends Plugin {
-
+    public static final String ERROR_TRACE_NAME_MISSING = "traceName must be provided.";
+    public static final String ERROR_METRIC_NAME_MISSING = "metricName must be provided.";
+    public static final String ERROR_TRACE_NAME_ALREADY_ASSIGNED = "traceName already assigned.";
+    public static final String ERROR_TRACE_NOT_FOUND = "No trace was found with the provided traceName.";
     private FirebasePerformance implementation = new FirebasePerformance();
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
+    public void startTrace(PluginCall call) {
+        String traceName = call.getString("traceName");
+        if (traceName == null) {
+            call.reject(ERROR_TRACE_NAME_MISSING);
+            return;
+        }
+        Trace trace = implementation.getTraceByName(traceName);
+        if (trace != null) {
+            call.reject(ERROR_TRACE_NAME_ALREADY_ASSIGNED);
+            return;
+        }
+        implementation.startTrace(traceName);
+        call.resolve();
+    }
 
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
+    @PluginMethod
+    public void stopTrace(PluginCall call) {
+        String traceName = call.getString("traceName");
+        if (traceName == null) {
+            call.reject(ERROR_TRACE_NAME_MISSING);
+            return;
+        }
+        Trace trace = implementation.getTraceByName(traceName);
+        if (trace == null) {
+            call.reject(ERROR_TRACE_NOT_FOUND);
+            return;
+        }
+        implementation.stopTrace(traceName);
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void incrementMetric(PluginCall call) {
+        String traceName = call.getString("traceName");
+        String metricName = call.getString("metricName");
+        Integer incrementBy = call.getInt("incrementBy", 1);
+        if (traceName == null) {
+            call.reject(ERROR_TRACE_NAME_MISSING);
+            return;
+        }
+        if (metricName == null) {
+            call.reject(ERROR_METRIC_NAME_MISSING);
+            return;
+        }
+        Trace trace = implementation.getTraceByName(traceName);
+        if (trace == null) {
+            call.reject(ERROR_TRACE_NOT_FOUND);
+            return;
+        }
+        implementation.incrementMetric(traceName, metricName, incrementBy);
+        call.resolve();
     }
 }
