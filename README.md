@@ -63,7 +63,7 @@ import { FirebasePerformance } from '@robingenz/capacitor-firebase-performance';
 ### startTrace(...)
 
 ```typescript
-startTrace(options: StartTraceOptions) => any
+startTrace(options: StartTraceOptions) => Promise<void>
 ```
 
 Starts a trace.
@@ -74,15 +74,13 @@ Only available for Android and iOS.
 | ------------- | --------------------------------------------------------------- |
 | **`options`** | <code><a href="#starttraceoptions">StartTraceOptions</a></code> |
 
-**Returns:** <code>any</code>
-
 --------------------
 
 
 ### stopTrace(...)
 
 ```typescript
-stopTrace(options: StopTraceOptions) => any
+stopTrace(options: StopTraceOptions) => Promise<void>
 ```
 
 Stops a trace.
@@ -93,15 +91,13 @@ Only available for Android and iOS.
 | ------------- | ------------------------------------------------------------- |
 | **`options`** | <code><a href="#stoptraceoptions">StopTraceOptions</a></code> |
 
-**Returns:** <code>any</code>
-
 --------------------
 
 
 ### incrementMetric(...)
 
 ```typescript
-incrementMetric(options: IncrementMetricOptions) => any
+incrementMetric(options: IncrementMetricOptions) => Promise<void>
 ```
 
 Atomically increments the metric with the given name for the selected trace by the `incrementBy` value.
@@ -111,8 +107,6 @@ Only available for Android and iOS.
 | Param         | Type                                                                      |
 | ------------- | ------------------------------------------------------------------------- |
 | **`options`** | <code><a href="#incrementmetricoptions">IncrementMetricOptions</a></code> |
-
-**Returns:** <code>any</code>
 
 --------------------
 
