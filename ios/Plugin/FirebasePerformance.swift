@@ -1,6 +1,6 @@
 import Foundation
 
-import Firebase
+import FirebaseCore
 import FirebasePerformance
 
 @objc public class FirebasePerformance: NSObject {
