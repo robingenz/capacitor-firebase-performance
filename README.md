@@ -61,7 +61,11 @@ const stopTrace = async () => {
 };
 
 const incrementMetric = async () => {
-  await FirebasePerformance.incrementMetric({ traceName: 'test_trace', metricName: 'item_cache_hit', incrementBy: 1 });
+  await FirebasePerformance.incrementMetric({ 
+    traceName: 'test_trace', 
+    metricName: 'item_cache_hit', 
+    incrementBy: 1 
+  });
 };
 ```
 
@@ -149,11 +153,11 @@ Only available for Android and iOS.
 
 #### IncrementMetricOptions
 
-| Prop              | Type                | Description                                       |
-| ----------------- | ------------------- | ------------------------------------------------- |
-| **`traceName`**   | <code>string</code> | Name of the trace that was set with `startTrace`. |
-| **`metricName`**  | <code>string</code> | Name of the metric to be incremented.             |
-| **`incrementBy`** | <code>number</code> | Amount by which the metric has to be incremented. |
+| Prop              | Type                | Description                                                    |
+| ----------------- | ------------------- | -------------------------------------------------------------- |
+| **`traceName`**   | <code>string</code> | Name of the trace that was set with `startTrace`.              |
+| **`metricName`**  | <code>string</code> | Name of the metric to be incremented.                          |
+| **`incrementBy`** | <code>number</code> | Amount by which the metric has to be incremented. Default: `1` |
 
 </docgen-api>
 
