@@ -1,10 +1,10 @@
 package dev.robingenz.capacitor.firebaseperformance;
 
 import com.google.firebase.perf.metrics.Trace;
-
 import java.util.HashMap;
 
 public class FirebasePerformance {
+
     private HashMap<String, Trace> traces = new HashMap<String, Trace>();
 
     public void startTrace(String traceName) {
