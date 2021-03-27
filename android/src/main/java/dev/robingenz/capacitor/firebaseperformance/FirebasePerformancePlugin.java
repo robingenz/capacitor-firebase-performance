@@ -9,6 +9,7 @@ import com.google.firebase.perf.metrics.Trace;
 
 @CapacitorPlugin(name = "FirebasePerformance")
 public class FirebasePerformancePlugin extends Plugin {
+
     public static final String ERROR_TRACE_NAME_MISSING = "traceName must be provided.";
     public static final String ERROR_METRIC_NAME_MISSING = "metricName must be provided.";
     public static final String ERROR_TRACE_NAME_ALREADY_ASSIGNED = "traceName already assigned.";
