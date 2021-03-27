@@ -49,10 +49,99 @@ import { FirebasePerformance } from '@robingenz/capacitor-firebase-performance';
 ## API
 
 <docgen-index>
+
+* [`startTrace(...)`](#starttrace)
+* [`stopTrace(...)`](#stoptrace)
+* [`incrementMetric(...)`](#incrementmetric)
+* [Interfaces](#interfaces)
+
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### startTrace(...)
+
+```typescript
+startTrace(options: StartTraceOptions) => any
+```
+
+Starts a trace.
+
+Only available for Android and iOS.
+
+| Param         | Type                                                            |
+| ------------- | --------------------------------------------------------------- |
+| **`options`** | <code><a href="#starttraceoptions">StartTraceOptions</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### stopTrace(...)
+
+```typescript
+stopTrace(options: StopTraceOptions) => any
+```
+
+Stops a trace.
+
+Only available for Android and iOS.
+
+| Param         | Type                                                          |
+| ------------- | ------------------------------------------------------------- |
+| **`options`** | <code><a href="#stoptraceoptions">StopTraceOptions</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### incrementMetric(...)
+
+```typescript
+incrementMetric(options: IncrementMetricOptions) => any
+```
+
+Atomically increments the metric with the given name for the selected trace by the `incrementBy` value.
+
+Only available for Android and iOS.
+
+| Param         | Type                                                                      |
+| ------------- | ------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#incrementmetricoptions">IncrementMetricOptions</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### StartTraceOptions
+
+| Prop            | Type                | Description                                                                                                                                                                                     |
+| --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`traceName`** | <code>string</code> | Custom trace name. Names for custom code traces must meet the following requirements: no leading or trailing whitespace, no leading underscore (_) character, and max length is 100 characters. |
+
+
+#### StopTraceOptions
+
+| Prop            | Type                | Description                                       |
+| --------------- | ------------------- | ------------------------------------------------- |
+| **`traceName`** | <code>string</code> | Name of the trace that was set with `startTrace`. |
+
+
+#### IncrementMetricOptions
+
+| Prop              | Type                | Description                                       |
+| ----------------- | ------------------- | ------------------------------------------------- |
+| **`traceName`**   | <code>string</code> | Name of the trace that was set with `startTrace`. |
+| **`metricName`**  | <code>string</code> | Name of the metric to be incremented.             |
+| **`incrementBy`** | <code>number</code> | Amount by which the metric has to be incremented. |
+
 </docgen-api>
 
 ## Changelog
