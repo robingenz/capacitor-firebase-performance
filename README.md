@@ -30,6 +30,15 @@ npm install @robingenz/capacitor-firebase-performance
 npx cap sync
 ```
 
+### Android
+
+See [Add the Performance Monitoring plugin to your app](https://firebase.google.com/docs/perf-mon/get-started-android#add-perfmon-plugin) and follow the instructions to set up your app correctly.
+
+#### Variables
+
+This plugin will use the following project variables (defined in your app’s `variables.gradle` file):
+- `$firebasePerfVersion` version of `com.google.firebase:firebase-perf` (default: `19.1.1`)
+
 ## Configuration
 
 No configuration required for this plugin.
