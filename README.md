@@ -43,7 +43,17 @@ A working example can be found here: [robingenz/capacitor-plugin-demo](https://g
 ```typescript
 import { FirebasePerformance } from '@robingenz/capacitor-firebase-performance';
 
-// TODO
+const startTrace = async () => {
+  await FirebasePerformance.startTrace({ traceName: 'test_trace' });
+};
+
+const stopTrace = async () => {
+  await FirebasePerformance.stopTrace({ traceName: 'test_trace' });
+};
+
+const incrementMetric = async () => {
+  await FirebasePerformance.incrementMetric({ traceName: 'test_trace', metricName: 'item_cache_hit', incrementBy: 1 });
+};
 ```
 
 ## API
