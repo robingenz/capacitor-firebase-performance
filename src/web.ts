@@ -1,10 +1,17 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { FirebasePerformancePlugin } from './definitions';
+import type { FirebasePerformancePlugin, IncrementMetricOptions, StartTraceOptions, StopTraceOptions } from './definitions';
 
 export class FirebasePerformanceWeb extends WebPlugin implements FirebasePerformancePlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  public async startTrace(_options: StartTraceOptions): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
+  }
+
+  public async stopTrace(_options: StopTraceOptions): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
+  }
+
+  public async incrementMetric(_options: IncrementMetricOptions): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
   }
 }
