@@ -2,7 +2,7 @@
 <h3 align="center">Firebase Performance</h3>
 <p align="center"><strong><code>@robingenz/capacitor-firebase-performance</code></strong></p>
 <p align="center">
-  Capacitor plugin for Firebase Performance Monitoring. 
+  Capacitor plugin for <a href="https://firebase.google.com/docs/perf-mon">Firebase Performance Monitoring</a>. 
 </p>
 
 <p align="center">
