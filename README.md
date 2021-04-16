@@ -30,6 +30,8 @@ npm install @robingenz/capacitor-firebase-performance
 npx cap sync
 ```
 
+Add Firebase to your project if you haven't already ([Android](https://firebase.google.com/docs/android/setup) / [iOS](https://firebase.google.com/docs/ios/setup)).
+
 ### Android
 
 See [Add the Performance Monitoring plugin to your app](https://firebase.google.com/docs/perf-mon/get-started-android#add-perfmon-plugin) and follow the instructions to set up your app correctly.
