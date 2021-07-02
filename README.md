@@ -69,6 +69,15 @@ const incrementMetric = async () => {
     incrementBy: 1 
   });
 };
+
+const setPerformanceCollectionEnabled = async () => {
+  await FirebasePerformance.setPerformanceCollectionEnabled({ enabled: true });
+};
+
+const isPerformanceCollectionEnabled = async () => {
+  const result = await FirebasePerformance.isPerformanceCollectionEnabled();
+  return result.enabled;
+};
 ```
 
 ## API
