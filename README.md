@@ -78,6 +78,8 @@ const incrementMetric = async () => {
 * [`startTrace(...)`](#starttrace)
 * [`stopTrace(...)`](#stoptrace)
 * [`incrementMetric(...)`](#incrementmetric)
+* [`setPerformanceCollectionEnabled(...)`](#setperformancecollectionenabled)
+* [`isPerformanceCollectionEnabled()`](#isperformancecollectionenabled)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -136,6 +138,39 @@ Only available for Android and iOS.
 --------------------
 
 
+### setPerformanceCollectionEnabled(...)
+
+```typescript
+setPerformanceCollectionEnabled(options: SetPerformanceCollectionEnabledOptions) => Promise<void>
+```
+
+Enables or disables performance monitoring.
+Will be applied with the next start of the app.
+
+Only available for Android and iOS.
+
+| Param         | Type                                                                                                      |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#setperformancecollectionenabledoptions">SetPerformanceCollectionEnabledOptions</a></code> |
+
+--------------------
+
+
+### isPerformanceCollectionEnabled()
+
+```typescript
+isPerformanceCollectionEnabled() => Promise<IsPerformanceCollectionEnabledResult>
+```
+
+Determines whether performance monitoring is enabled or disabled.
+
+Only available for Android and iOS.
+
+**Returns:** <code>Promise&lt;<a href="#isperformancecollectionenabledresult">IsPerformanceCollectionEnabledResult</a>&gt;</code>
+
+--------------------
+
+
 ### Interfaces
 
 
@@ -160,6 +195,20 @@ Only available for Android and iOS.
 | **`traceName`**   | <code>string</code> | Name of the trace that was set with `startTrace`.              |
 | **`metricName`**  | <code>string</code> | Name of the metric to be incremented.                          |
 | **`incrementBy`** | <code>number</code> | Amount by which the metric has to be incremented. Default: `1` |
+
+
+#### SetPerformanceCollectionEnabledOptions
+
+| Prop          | Type                 | Description                               |
+| ------------- | -------------------- | ----------------------------------------- |
+| **`enabled`** | <code>boolean</code> | Should performance monitoring be enabled. |
+
+
+#### IsPerformanceCollectionEnabledResult
+
+| Prop          | Type                 | Description                                                     |
+| ------------- | -------------------- | --------------------------------------------------------------- |
+| **`enabled`** | <code>boolean</code> | `true` if performance monitoring is enabled, otherwise `false`. |
 
 </docgen-api>
 
