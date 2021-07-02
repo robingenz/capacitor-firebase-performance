@@ -9,6 +9,7 @@ import Capacitor
 public class FirebasePerformancePlugin: CAPPlugin {
     public let errorTraceNameMissing = "traceName must be provided.";
     public let errorMetricNameMissing = "metricName must be provided.";
+    public let errorEnabledMissing = "enabled must be provided.";
     public let errorTraceNameAlreadyAssigned = "traceName already assigned.";
     public let errorTraceNotFound = "No trace was found with the provided traceName.";
     private var implementation: FirebasePerformance?
@@ -62,5 +63,21 @@ public class FirebasePerformancePlugin: CAPPlugin {
         let incrementBy = call.getInt("incrementBy") ?? 1
         implementation?.incrementMetric(traceName, metricName, incrementBy)
         call.resolve()
+    }
+    
+    @objc func setPerformanceCollectionEnabled(_ call: CAPPluginCall) {
+        guard let enabled = call.getBool("enabled") else {
+            call.reject(errorEnabledMissing)
+            return;
+        }
+        implementation?.setPerformanceCollectionEnabled(enabled)
+        call.resolve()
+    }
+    
+    @objc func isPerformanceCollectionEnabled(_ call: CAPPluginCall) {
+        let enabled = implementation?.isPerformanceCollectionEnabled()
+        var result = JSObject()
+        result["enabled"] = enabled
+        call.resolve(result)
     }
 }

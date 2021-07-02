@@ -35,4 +35,12 @@ import FirebasePerformance
     @objc public func getTraceByName(_ traceName: String) -> Trace? {
         return self.traces[traceName]
     }
+    
+    @objc public func setPerformanceCollectionEnabled(_ enabled: Bool) {
+        Performance.sharedInstance().isDataCollectionEnabled = enabled;
+    }
+    
+    @objc public func isPerformanceCollectionEnabled() -> Bool {
+        return Performance.sharedInstance().isDataCollectionEnabled;
+    }
 }
