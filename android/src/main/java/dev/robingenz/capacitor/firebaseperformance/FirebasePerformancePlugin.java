@@ -13,6 +13,7 @@ public class FirebasePerformancePlugin extends Plugin {
     public static final String ERROR_TRACE_NAME_MISSING = "traceName must be provided.";
     public static final String ERROR_METRIC_NAME_MISSING = "metricName must be provided.";
     public static final String ERROR_TRACE_NAME_ALREADY_ASSIGNED = "traceName already assigned.";
+    public static final String ERROR_ENABLED_MISSING = "enabled must be provided.";
     public static final String ERROR_TRACE_NOT_FOUND = "No trace was found with the provided traceName.";
     private FirebasePerformance implementation = new FirebasePerformance();
 
@@ -68,5 +69,24 @@ public class FirebasePerformancePlugin extends Plugin {
         }
         implementation.incrementMetric(traceName, metricName, incrementBy);
         call.resolve();
+    }
+
+    @PluginMethod
+    public void setPerformanceCollectionEnabled(PluginCall call) {
+        Boolean enabled = call.getBoolean("enabled");
+        if (enabled == null) {
+            call.reject(ERROR_ENABLED_MISSING);
+            return;
+        }
+        implementation.setPerformanceCollectionEnabled(enabled);
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void isPerformanceCollectionEnabled(PluginCall call) {
+        Boolean enabled = implementation.isPerformanceCollectionEnabled();
+        JSObject result = new JSObject();
+        result.put("enabled", enabled);
+        call.resolve(result);
     }
 }

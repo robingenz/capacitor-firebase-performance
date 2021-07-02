@@ -8,7 +8,7 @@ public class FirebasePerformance {
     private HashMap<String, Trace> traces = new HashMap<String, Trace>();
 
     public void startTrace(String traceName) {
-        Trace trace = com.google.firebase.perf.FirebasePerformance.getInstance().newTrace("test_trace");
+        Trace trace = this.getFirebasePerformanceInstance().newTrace("test_trace");
         trace.start();
         this.traces.put(traceName, trace);
     }
@@ -29,5 +29,17 @@ public class FirebasePerformance {
             return this.traces.get(traceName);
         }
         return null;
+    }
+
+    public void setPerformanceCollectionEnabled(Boolean enabled) {
+        this.getFirebasePerformanceInstance().setPerformanceCollectionEnabled(enabled);
+    }
+
+    public Boolean isPerformanceCollectionEnabled() {
+        return this.getFirebasePerformanceInstance().isPerformanceCollectionEnabled();
+    }
+
+    private com.google.firebase.perf.FirebasePerformance getFirebasePerformanceInstance() {
+        return com.google.firebase.perf.FirebasePerformance.getInstance();
     }
 }
