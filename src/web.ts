@@ -32,8 +32,7 @@ export class FirebasePerformanceWeb
     throw this.unimplemented('Not implemented on web.');
   }
 
-  public async isPerformanceCollectionEnabled(
-  ): Promise<IsPerformanceCollectionEnabledResult> {
+  public async isPerformanceCollectionEnabled(): Promise<IsPerformanceCollectionEnabledResult> {
     throw this.unimplemented('Not implemented on web.');
   }
 }

@@ -23,12 +23,14 @@ export interface FirebasePerformancePlugin {
    *
    * Only available for Android and iOS.
    */
-  setPerformanceCollectionEnabled(options: SetPerformanceCollectionEnabledOptions): Promise<void>;
-   /**
-    * Determines whether performance monitoring is enabled or disabled.
-    *
-    * Only available for Android and iOS.
-    */
+  setPerformanceCollectionEnabled(
+    options: SetPerformanceCollectionEnabledOptions,
+  ): Promise<void>;
+  /**
+   * Determines whether performance monitoring is enabled or disabled.
+   *
+   * Only available for Android and iOS.
+   */
   isPerformanceCollectionEnabled(): Promise<IsPerformanceCollectionEnabledResult>;
 }
 
