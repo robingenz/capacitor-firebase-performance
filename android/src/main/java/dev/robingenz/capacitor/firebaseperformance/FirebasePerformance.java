@@ -8,7 +8,7 @@ public class FirebasePerformance {
     private HashMap<String, Trace> traces = new HashMap<String, Trace>();
 
     public void startTrace(String traceName) {
-        Trace trace = this.getFirebasePerformanceInstance().newTrace("test_trace");
+        Trace trace = this.getFirebasePerformanceInstance().newTrace(traceName);
         trace.start();
         this.traces.put(traceName, trace);
     }
