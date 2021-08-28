@@ -50,7 +50,7 @@ export class FirebasePerformanceWeb
   public async isPerformanceCollectionEnabled(): Promise<IsPerformanceCollectionEnabledResult> {
     const perf = getPerformance();
     const result: IsPerformanceCollectionEnabledResult = {
-      enabled: !!perf.instrumentationEnabled,
+      enabled: perf.instrumentationEnabled || perf.dataCollectionEnabled,
     };
     return result;
   }
