@@ -30,7 +30,7 @@ npm install @robingenz/capacitor-firebase-performance
 npx cap sync
 ```
 
-Add Firebase to your project if you haven't already ([Android](https://firebase.google.com/docs/android/setup) / [iOS](https://firebase.google.com/docs/ios/setup)).
+Add Firebase to your project if you haven't already ([Android](https://firebase.google.com/docs/android/setup) / [iOS](https://firebase.google.com/docs/ios/setup) / [Web](https://firebase.google.com/docs/web/setup)).
 
 ### Android
 
@@ -104,8 +104,6 @@ startTrace(options: StartTraceOptions) => Promise<void>
 
 Starts a trace.
 
-Only available for Android and iOS.
-
 | Param         | Type                                                            |
 | ------------- | --------------------------------------------------------------- |
 | **`options`** | <code><a href="#starttraceoptions">StartTraceOptions</a></code> |
@@ -121,8 +119,6 @@ stopTrace(options: StopTraceOptions) => Promise<void>
 
 Stops a trace.
 
-Only available for Android and iOS.
-
 | Param         | Type                                                          |
 | ------------- | ------------------------------------------------------------- |
 | **`options`** | <code><a href="#stoptraceoptions">StopTraceOptions</a></code> |
@@ -137,8 +133,6 @@ incrementMetric(options: IncrementMetricOptions) => Promise<void>
 ```
 
 Atomically increments the metric with the given name for the selected trace by the `incrementBy` value.
-
-Only available for Android and iOS.
 
 | Param         | Type                                                                      |
 | ------------- | ------------------------------------------------------------------------- |
@@ -156,8 +150,6 @@ setPerformanceCollectionEnabled(options: SetPerformanceCollectionEnabledOptions)
 Enables or disables performance monitoring.
 Will be applied with the next start of the app.
 
-Only available for Android and iOS.
-
 | Param         | Type                                                                                                      |
 | ------------- | --------------------------------------------------------------------------------------------------------- |
 | **`options`** | <code><a href="#setperformancecollectionenabledoptions">SetPerformanceCollectionEnabledOptions</a></code> |
@@ -172,8 +164,6 @@ isPerformanceCollectionEnabled() => Promise<IsPerformanceCollectionEnabledResult
 ```
 
 Determines whether performance monitoring is enabled or disabled.
-
-Only available for Android and iOS.
 
 **Returns:** <code>Promise&lt;<a href="#isperformancecollectionenabledresult">IsPerformanceCollectionEnabledResult</a>&gt;</code>
 

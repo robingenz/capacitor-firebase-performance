@@ -7,6 +7,7 @@ export default {
       name: 'capacitorFirebasePerformance',
       globals: {
         '@capacitor/core': 'capacitorExports',
+        'firebase/performance': 'firebasePerformanceExports',
       },
       sourcemap: true,
       inlineDynamicImports: true,
@@ -18,5 +19,5 @@ export default {
       inlineDynamicImports: true,
     },
   ],
-  external: ['@capacitor/core'],
+  external: ['@capacitor/core', 'firebase/performance'],
 };

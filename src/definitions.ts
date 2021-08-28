@@ -1,35 +1,25 @@
 export interface FirebasePerformancePlugin {
   /**
    * Starts a trace.
-   *
-   * Only available for Android and iOS.
    */
   startTrace(options: StartTraceOptions): Promise<void>;
   /**
    * Stops a trace.
-   *
-   * Only available for Android and iOS.
    */
   stopTrace(options: StopTraceOptions): Promise<void>;
   /**
    * Atomically increments the metric with the given name for the selected trace by the `incrementBy` value.
-   *
-   * Only available for Android and iOS.
    */
   incrementMetric(options: IncrementMetricOptions): Promise<void>;
   /**
    * Enables or disables performance monitoring.
    * Will be applied with the next start of the app.
-   *
-   * Only available for Android and iOS.
    */
   setPerformanceCollectionEnabled(
     options: SetPerformanceCollectionEnabledOptions,
   ): Promise<void>;
   /**
    * Determines whether performance monitoring is enabled or disabled.
-   *
-   * Only available for Android and iOS.
    */
   isPerformanceCollectionEnabled(): Promise<IsPerformanceCollectionEnabledResult>;
 }
