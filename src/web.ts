@@ -1,4 +1,6 @@
 import { WebPlugin } from '@capacitor/core';
+import type { PerformanceTrace } from 'firebase/performance';
+import { getPerformance, trace as createTrace } from 'firebase/performance';
 
 import type {
   FirebasePerformancePlugin,
@@ -12,27 +14,44 @@ import type {
 export class FirebasePerformanceWeb
   extends WebPlugin
   implements FirebasePerformancePlugin {
-  public async startTrace(_options: StartTraceOptions): Promise<void> {
-    throw this.unimplemented('Not implemented on web.');
+  private traces: { [key: string]: PerformanceTrace | undefined } = {};
+
+  public async startTrace(options: StartTraceOptions): Promise<void> {
+    const perf = getPerformance();
+    const trace = createTrace(perf, options.traceName);
+    trace.start();
+    this.traces[options.traceName] = trace;
   }
 
-  public async stopTrace(_options: StopTraceOptions): Promise<void> {
-    throw this.unimplemented('Not implemented on web.');
+  public async stopTrace(options: StopTraceOptions): Promise<void> {
+    const trace = this.traces[options.traceName];
+    if (!trace) {
+      return;
+    }
+    trace.stop();
   }
 
-  public async incrementMetric(
-    _options: IncrementMetricOptions,
-  ): Promise<void> {
-    throw this.unimplemented('Not implemented on web.');
+  public async incrementMetric(options: IncrementMetricOptions): Promise<void> {
+    const trace = this.traces[options.traceName];
+    if (!trace) {
+      return;
+    }
+    trace.incrementMetric(options.metricName, options.incrementBy);
   }
 
   public async setPerformanceCollectionEnabled(
-    _options: SetPerformanceCollectionEnabledOptions,
+    options: SetPerformanceCollectionEnabledOptions,
   ): Promise<void> {
-    throw this.unimplemented('Not implemented on web.');
+    const perf = getPerformance();
+    perf.instrumentationEnabled = options.enabled;
+    perf.dataCollectionEnabled = options.enabled;
   }
 
   public async isPerformanceCollectionEnabled(): Promise<IsPerformanceCollectionEnabledResult> {
-    throw this.unimplemented('Not implemented on web.');
+    const perf = getPerformance();
+    const result: IsPerformanceCollectionEnabledResult = {
+      enabled: !!perf.instrumentationEnabled,
+    };
+    return result;
   }
 }
