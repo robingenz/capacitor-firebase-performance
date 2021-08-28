@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/robingenz/capacitor-firebase-performance/compare/v1.2.0...v1.3.0) (2021-08-28)
+
+
+### Features
+
+* add `web` support ([#18](https://github.com/robingenz/capacitor-firebase-performance/issues/18)) ([8a0ecd4](https://github.com/robingenz/capacitor-firebase-performance/commit/8a0ecd4b0de0b7fc2b9830b4f7a24e24acdde7e6))
+
 ## [1.2.0](https://github.com/robingenz/capacitor-firebase-performance/compare/v1.1.0...v1.2.0) (2021-07-31)
 
 
