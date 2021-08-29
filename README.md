@@ -26,7 +26,7 @@
 ## Installation
 
 ```bash
-npm install @robingenz/capacitor-firebase-performance
+npm install @robingenz/capacitor-firebase-performance firebase
 npx cap sync
 ```
 
