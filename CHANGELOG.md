@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/robingenz/capacitor-firebase-performance/compare/v1.3.0...v1.3.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* inline source code in esm map files ([3befbc9](https://github.com/robingenz/capacitor-firebase-performance/commit/3befbc9890e8e65dda4620c0bb81b6e841954ef8))
+
 ## [1.3.0](https://github.com/robingenz/capacitor-firebase-performance/compare/v1.2.0...v1.3.0) (2021-08-28)
 
 
