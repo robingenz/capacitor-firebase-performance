@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/robingenz/capacitor-firebase-performance/compare/v1.3.1...v1.4.0) (2022-03-08)
+
+
+### Features
+
+* **android:** update `com.google.firebase:firebase-perf` to `20.0.5` ([#20](https://github.com/robingenz/capacitor-firebase-performance/issues/20)) ([30f8a80](https://github.com/robingenz/capacitor-firebase-performance/commit/30f8a802eebf6b182ee7de283b83adc2e1f6a2ad))
+* **ios:** update `Firebase/Performance` to `8.12.1` ([#21](https://github.com/robingenz/capacitor-firebase-performance/issues/21)) ([a5970c8](https://github.com/robingenz/capacitor-firebase-performance/commit/a5970c884cad649b565efb6827bcaa6db7de1fc9))
+
 ### [1.3.1](https://github.com/robingenz/capacitor-firebase-performance/compare/v1.3.0...v1.3.1) (2022-01-26)
 
 
