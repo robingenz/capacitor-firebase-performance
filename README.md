@@ -39,7 +39,7 @@ See [Add the Performance Monitoring plugin to your app](https://firebase.google.
 #### Variables
 
 This plugin will use the following project variables (defined in your app’s `variables.gradle` file):
-- `$firebasePerfVersion` version of `com.google.firebase:firebase-perf` (default: `20.0.2`)
+- `$firebasePerfVersion` version of `com.google.firebase:firebase-perf` (default: `20.0.5`)
 
 ## Configuration
 
